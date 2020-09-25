@@ -10,7 +10,9 @@ write-host Generating $wsdl_file_path
 
 [System.IO.FileInfo]$path = $wsdl_file_path
 
+$classPath = Split-Path -Path $path
+
 $classOut=$path.BaseName
 $classNamespace=$path.BaseName
 
-wsdl.exe file://$wsdl_file_path /o:$classOut.cs /n:O$classNamespace
+wsdl.exe file://$wsdl_file_path /o:$classPath\$classOut.cs /n:O$classNamespace
